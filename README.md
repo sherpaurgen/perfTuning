@@ -55,7 +55,7 @@ Creating flame graph:-
 
 Download and view flame1006.svg in browser
 
-![flame1006.svg](https://github.com/sherpaurgen/perfTuning/blob/main/flame1006.svg "flame1006.svg")
+![flame1006.svg](https://github.com/sherpaurgen/perfTuning/blob/main/flame1006.svg?raw=true"flame1006.svg")
 
 Here we can observe that io.copybuffer function is using most cpu time [io.copy source](https://cs.opensource.google/go/go/+/refs/tags/go1.19.2:src/io/io.go;l=386)
 looking further net.(*netFD).Read is the function call using most cpu time. This net.(*netFD).Read implements func (*IPConn) Read
