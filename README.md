@@ -55,12 +55,18 @@ Creating flame graph:-
 
 Download and view flame1006.svg in browser
 
+![flame1006.svg](https://github.com/sherpaurgen/perfTuning/blob/main/flame1006.svg "flame1006.svg")
+
 Here we can observe that io.copybuffer function is using most cpu time [io.copy source](https://cs.opensource.google/go/go/+/refs/tags/go1.19.2:src/io/io.go;l=386)
 looking further net.(*netFD).Read is the function call using most cpu time. This net.(*netFD).Read implements func (*IPConn) Read
 [Conn](https://pkg.go.dev/net#Conn) is a generic stream-oriented network connection.
 this function reads data from the connection. This func https://go.dev/src/net/http/transfer.go ¶
 we also see ksys_read() is called. This function is responsible for retrieving the struct fd that corresponds with the file descriptor passed in by the user. The struct fd structure contains the struct file_operations structure within it.
 
+![fg2.png](https://github.com/sherpaurgen/perfTuning/blob/main/fg2.png "fg2.png")
+(image is png instead of SVG as we cannot view svg in github )
+
 sock_read_iter is fired when receiving a message on a socket
 By looking at the graph we can conclude that the cpu usage by main programme is spent mostly on reading data from the connection.
 
+https://dev.to/sherpaurgen/flamegraphs-part-1-2ncl
