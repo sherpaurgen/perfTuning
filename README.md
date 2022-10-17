@@ -44,7 +44,7 @@ func main() {
 compile/build the main.go and run it ./main
 Get the process id of main e.g ps aux | grep main
 
-perf record -a -F 99 -g -p 1464 -- sleep 20
+`perf record -a -F 99 -g -p 1464 -- sleep 20`
 Running above command creates a perf.data file
 
 perf script > perf.script //it will by default read perf.data from current working directory and redirects stdout to a file perf.script(ascii file)
