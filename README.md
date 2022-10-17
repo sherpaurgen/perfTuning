@@ -3,9 +3,11 @@
 As a developer/sysadmin you can create [flamegraphs](https://github.com/brendangregg/FlameGraph) to to create visualizations of system performance data recorded with the perf tool. This perf output shows a stack trace followed by a count, for a total of #N number of samples
 
 git clone the flamegraph scripts:
-
+```
 cd /home/ubuntu
+
 git clone https://github.com/brendangregg/FlameGraph
+```
 
 Sampling a go programme which downloads an linuxmint iso
 
@@ -41,13 +43,13 @@ func main() {
     }
 }
 ```
-compile/build the main.go and run it ./main
-Get the process id of main e.g ps aux | grep main
+compile/build the main.go and run it `./main`
+Get the process id of main e.g `ps aux | grep main`
 
 `perf record -a -F 99 -g -p 1464 -- sleep 20`
 Running above command creates a perf.data file
 
-perf script > perf.script //it will by default read perf.data from current working directory and redirects stdout to a file perf.script(ascii file)
+`perf script > perf.script ` //it will by default read perf.data from current working directory and redirects stdout to a file `perf.script` (ascii file)
 This command reads the input file and displays the trace recorded.
 
 Creating flame graph:-
@@ -66,7 +68,7 @@ we also see ksys_read() is called. This function is responsible for retrieving t
 ![fg2.png](https://github.com/sherpaurgen/perfTuning/blob/main/fg2.png "fg2.png")
 (image is png instead of SVG as we cannot view svg in github but i think the point is comprehensible)
 
-sock_read_iter is fired when receiving a message on a socket
+`sock_read_iter` is fired when receiving a message on a socket
 By looking at the graph we can conclude that the cpu usage by main programme is spent mostly on reading data from the connection.
 
 https://dev.to/sherpaurgen/flamegraphs-part-1-2ncl
