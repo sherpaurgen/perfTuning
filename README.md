@@ -66,7 +66,8 @@ this function reads data from the connection. This func https://go.dev/src/net/h
 we also see ksys_read() is called. This function is responsible for retrieving the struct fd that corresponds with the file descriptor passed in by the user. The struct fd structure contains the struct file_operations structure within it.
 
 ![fg2.png](https://github.com/sherpaurgen/perfTuning/blob/main/fg2.png "fg2.png")
-(image is png instead of SVG as we cannot view svg in github but i think the point is comprehensible)
+
+(image is png instead of SVG as we cannot view svg in github but i think the point is pretty comprehensible)
 
 `sock_read_iter` is fired when receiving a message on a socket
 By looking at the graph we can conclude that the cpu usage by main programme is spent mostly on reading data from the connection.
