@@ -9,7 +9,7 @@ cd /home/ubuntu
 git clone https://github.com/brendangregg/FlameGraph
 ```
 
-Sampling a go programme which downloads an linuxmint iso
+Sampling a go programme which downloads linuxmint iso of size approx 2.3GB in size
 
 ```
 package main
